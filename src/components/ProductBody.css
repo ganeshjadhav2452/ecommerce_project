@@ -1,0 +1,17 @@
+    .productBody{
+        height: 80vh ;
+        margin-top: 15vh;
+    }
+
+    .sectionStyle{
+        margin-bottom: 35% !important;
+    
+        
+    }
+    .parentDiv{
+        background-color: aliceblue;    
+    
+            
+        overflow: scroll;
+
+    }

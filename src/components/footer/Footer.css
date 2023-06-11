@@ -1,0 +1,25 @@
+.sMedia{
+    height: 2rem;
+    width: 2rem;
+    background-color: rgb(255, 255, 255) !important;
+   margin-left: 4rem;
+}
+
+.socialMedial{
+    display: flex;
+    
+}
+
+.footerDiv{
+    height: 5rem;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.sMediaIcon{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 25%;
+    
+}
