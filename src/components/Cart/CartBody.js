@@ -1,46 +1,18 @@
-import React from "react";
+import React,{useContext} from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./CartBody.css";
 import CartItem from "./CartItem";
+import CartContext from "../../store/cartContext/CartContext";
 
-const cartElements = [
-  {
-    title: "Colors",
 
-    price: 100,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-    quantity: 2,
-  },
-
-  {
-    title: "Black & white",
-
-    price: 50,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-    quantity: 3,
-  },
-
-  {
-    title: "Yellow & Black",
-
-    price: 70,
-
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-    quantity: 1,
-  },
-];
 
 function CartBody() {
+    const {updatedArray } = useContext(CartContext)
 
-    const cartBodyClickHandler = (e) => {
-        e.stopPropagation();
-      };
-    
+  const cartBodyClickHandler = (e) => {
+    e.stopPropagation();
+  };
+  console.log(updatedArray)
   return (
     <Container onClick={cartBodyClickHandler}>
       <Row>
@@ -58,8 +30,16 @@ function CartBody() {
                   <span>Quantity</span>
                 </div>
 
-                {cartElements.map((item)=> <CartItem title={item.title} imgUrl={item.imageUrl} price={item.price} quantity={item.quantity}/>)}
-
+                {updatedArray.map((item) => (
+                 
+                  <CartItem
+                    title={item.title}
+                    imgUrl={item.url}
+                    price={item.price}
+                    quantity={item.updatedQuantity}
+                    key={item.id}
+                  />
+                ))}
               </Col>
             </Row>
           </Container>

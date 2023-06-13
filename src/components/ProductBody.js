@@ -6,6 +6,7 @@ import {Button} from "react-bootstrap";
 
 const productsArr = [
   {
+    id:1,
     title: "Colors",
 
     price: 100,
@@ -15,6 +16,7 @@ const productsArr = [
   },
 
   {
+    id:2,
     title: "Black and white Colors",
 
     price: 50,
@@ -24,6 +26,7 @@ const productsArr = [
   },
 
   {
+    id:3,
     title: "Yellow and Black Colors",
 
     price: 70,
@@ -33,6 +36,7 @@ const productsArr = [
   },
 
   {
+    id:4,
     title: "Blue Color",
 
     price: 100,
@@ -41,24 +45,28 @@ const productsArr = [
     category: "music",
   },
   {
+    id:5,
     title: "t-shirt",
     price: 40,
     imageUrl: "https://source.unsplash.com/WWesmHEgXDs",
     category: "merchandise",
   },
   {
+    id:6,
     title: "top",
     price: 15,
     imageUrl: "https://source.unsplash.com/pFPvIlth4ec",
     category: "merchandise",
   },
   {
+    id:7,
     title: "shirt ",
     price: 20,
     imageUrl: "https://source.unsplash.com/Xo-gWpCmgDw",
     category: "merchandise",
   },
   {
+    id:8,
     title: "suite",
     price: 8,
     imageUrl: "https://source.unsplash.com/nKwXqyivGNM",
@@ -82,8 +90,8 @@ function ProductBody() {
 
             {productsArr.map((product) => {
               return product.category == 'music' ? (
-                <Col xs={5} className="m-3">
-                  <Product title={product.title} price={product.price} url={product.imageUrl} />
+                <Col key={product.id} xs={5} className="m-3">
+                  <Product id={product.id} title={product.title} price={product.price} url={product.imageUrl} />
                 </Col>
               ) : null;
             })}
@@ -100,7 +108,7 @@ function ProductBody() {
 
           {productsArr.map((product) => {
               return product.category == 'merchandise' ? (  
-                <Col xs={5} className="m-3">
+                <Col key={product.id} xs={5} className="m-3">
                   <Product title={product.title} price={product.price} url={product.imageUrl} />
                 </Col>
               ) : null;

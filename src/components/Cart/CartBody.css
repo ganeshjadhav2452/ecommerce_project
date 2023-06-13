@@ -5,5 +5,5 @@
     width: 100vw !important;
     margin-top: 19rem !important;
     margin-right: 10%;
-   
+   overflow: auto;
 }

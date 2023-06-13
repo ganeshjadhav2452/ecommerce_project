@@ -1,20 +1,18 @@
-.cartItem{
-
+.cartItem {
 }
-.item{
-    width: 5rem;
-    height: 5rem;
-    border-radius: 10px;
+.item {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 10px;
 }
 
-.imgItem{
-    width: 4rem;
-    height: 4rem;
-    display: flex;
-    margin-left: 1rem;
-
+.imgItem {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  margin-left: 1rem;
 }
-.rmBtn{
-   margin-left: 2rem;
-   margin-right: 0%;
+.rmBtn {
+  margin-left: 2rem;
+  margin-right: 0%;
 }
