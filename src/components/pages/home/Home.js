@@ -1,11 +1,15 @@
 import React from 'react'
-import NavBar from '../../NavBar'
-import Footer from '../../footer/Footer'
+import WebHeading from '../../WebHeading'
+import WebHeadingExtend from './WebHeadingExtend'
+import Tours from './Tours'
+
 
 function Home() {
   return (
     <div>
-        
+      <WebHeadingExtend />
+      <Tours/>
+      
     </div>
   )
 }

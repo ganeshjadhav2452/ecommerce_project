@@ -23,3 +23,7 @@
 .parent p h5{
     margin-left: 12rem;
 }
+
+.aboutImg{
+    margin: 0 !important;
+}
