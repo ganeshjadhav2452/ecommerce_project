@@ -1,7 +1,7 @@
 import React, { useContext , useState} from "react";
 
 import { Card, Button } from "react-bootstrap";
-import CartContext from "../store/cartContext/CartContext";
+import CartContext from "../../../store/cartContext/CartContext";
 import './Product.css'
 function Product(props) {
   const {  updateTheValue } = useContext(CartContext);

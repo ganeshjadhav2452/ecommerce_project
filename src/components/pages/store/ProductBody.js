@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./ProductBody.css";
 import { Container, Row, Col } from "react-bootstrap";
 import Product from "./Product";
@@ -11,7 +11,7 @@ const productsArr = [
 
     price: 100,
 
-    imageUrl: "https://source.unsplash.com/WWesmHEgXDs",
+    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
     category: "music",
   },
 
@@ -89,7 +89,7 @@ function ProductBody() {
           <Row className="d-flex justify-content-center align-item-center">
 
             {productsArr.map((product) => {
-              return product.category == 'music' ? (
+              return product.category === 'music' ? (
                 <Col key={product.id} xs={5} className="m-3">
                   <Product id={product.id} title={product.title} price={product.price} url={product.imageUrl} />
                 </Col>
@@ -107,7 +107,7 @@ function ProductBody() {
           <Row className="d-flex justify-content-center align-item-center">
 
           {productsArr.map((product) => {
-              return product.category == 'merchandise' ? (  
+              return product.category === 'merchandise' ? (  
                 <Col key={product.id} xs={5} className="m-3">
                   <Product title={product.title} price={product.price} url={product.imageUrl} />
                 </Col>
@@ -116,9 +116,12 @@ function ProductBody() {
 
           </Row>
         </Container>
+
       </section>
      
-     
+     <Button className="text-info cartBtn mt-2 " variant="dark">
+          See Cart
+        </Button>
     </div>
   );
 }

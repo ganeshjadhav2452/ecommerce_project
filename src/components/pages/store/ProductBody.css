@@ -15,3 +15,10 @@
         overflow: scroll;
 
     }
+
+    .cartBtn{
+        position:relative;
+        left: 42%;
+        width: 10rem;
+        margin-bottom: 2rem;
+    }
