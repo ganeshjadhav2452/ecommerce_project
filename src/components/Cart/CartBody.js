@@ -29,6 +29,7 @@ function CartBody() {
                   <span>Price</span>
                   <span>Quantity</span>
                 </div>
+                <hr />
 
                 {updatedArray.map((item) => (
                  

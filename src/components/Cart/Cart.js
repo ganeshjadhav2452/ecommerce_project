@@ -11,7 +11,7 @@ const {updatedArray} = useContext(CartContext)
 
   const openCartBodyHandler = ()=>{
     setCartOpen(!cartOpen)
-    console.log(cartOpen)
+   
   }
   return (
     <Container className=" cart bg-light rounded border border-info" onClick={openCartBodyHandler}>

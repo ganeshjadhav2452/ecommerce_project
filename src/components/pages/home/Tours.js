@@ -34,6 +34,8 @@ const tourData = [
   }
 ]
 function Tours() {
+
+  
   return (
     <section className='w-100 h-100 bg-light  d-flex flex-column justify-content-center align-items-center'>
       <div className='m-3'>
