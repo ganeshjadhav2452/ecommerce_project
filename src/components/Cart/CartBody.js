@@ -14,7 +14,7 @@ function CartBody() {
   };
   console.log(updatedArray)
   return (
-    <Container onClick={cartBodyClickHandler}>
+    <Container  onClick={cartBodyClickHandler}>
       <Row>
         <Col xs={12} className="cartBody rounded rounded-4 border border-5">
           <p style={{ marginLeft: "30%" }} className="fs-2   fw-bold">

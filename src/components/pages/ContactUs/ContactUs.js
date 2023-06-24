@@ -61,6 +61,13 @@ function ContactUs() {
            
         })
 
+        setAllData({
+            userEmail:'',
+            userName:'',
+            userMessage:'',
+            userPhoneNumber:''
+        })
+
     }
 
   return (
@@ -84,30 +91,32 @@ function ContactUs() {
             <div className="container mt-5">
               <div className="row">
                 
-                <p className="fs-4  fw-bold mb-4 heading">Contact Us</p>
+                <p className="heading fs-4  fw-bold mb-4 ">Contact Us</p>
                 
                 <div className="col-6">
                  
-                  <div class="mb-4">
+                  <div className="mb-4">
                         
                     
                     <input
                       type="text"
-                      class="form-control"
+                      className="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Your Name"
                       onChange={nameChangeHandler}
+                      value={allData.userName}
                     />
                   </div>
                 </div>
                 <div className="col-6">
-                  <div class="mb-4">
+                  <div className="mb-4">
                     <input
                       type="number"
-                      class="form-control"
+                      className="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Phone Number"
                       onChange={phoneNumberChangeHandler}
+                      value={allData.userPhoneNumber}
                     />
                   </div>
                 </div>
@@ -115,22 +124,24 @@ function ContactUs() {
 
               <div className="row">
                 <div className="col-12">
-                  <div class="mb-4">
+                  <div className="mb-4">
                     <input
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       id="exampleFormControlInput1"
                       placeholder="name@example.com"
                       onChange={emailChangeHandler}
+                      value={allData.userEmail}
                     />
                   </div>
-                  <div class="mb-4">
+                  <div className="mb-4">
                     <textarea
-                      class="form-control"
+                      className="form-control"
                       id="exampleFormControlTextarea1"
                       rows="5"
                       placeholder="Your Message..."
                       onChange={textMessageChangeHandler}
+                      value={allData.userMessage}
                     ></textarea>
                  <button type="submit"  className="btn btn-primary mt-4 w-100 rounded-5" >submit</button>
                  

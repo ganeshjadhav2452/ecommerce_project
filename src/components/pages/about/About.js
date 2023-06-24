@@ -5,12 +5,39 @@ function About() {
   return (
     <Fragment>
       <div className="parent ">
-      <img className=" img rounded-circle aboutImg w-25" src="https://source.unsplash.com/4AWwK4izVhM" alt="profile" />
+        <img className=" img rounded-circle aboutImg w-25" src="https://source.unsplash.com/4AWwK4izVhM" alt="profile" />
 
-     <p className="w-50 para fw-">
-      <h5 >About Us</h5>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi, harum quis nam voluptatum modi sunt doloremque! Commodi rerum, at voluptatum, exercitationem nostrum natus repellendus explicabo non error voluptatem delectus ullam odit praesentium et iure suscipit! Perspiciatis aut laudantium voluptatem amet officiis nemo, ea molestiae iste incidunt ullam odit corporis? Sapiente quisquam nemo tenetur fugit soluta saepe incidunt odio, nulla eveniet nisi, consequuntur odit assumenda enim. Quibusdam laudantium illo suscipit natus possimus fuga molestiae officiis doloremque, quis corporis placeat eaque esse eos! Voluptates earum impedit fugit harum ipsa debitis laboriosam enim architecto soluta sapiente? Officiis saepe impedit cupiditate ducimus placeat velit.</p>
+        <p className="w-50 para fw-">
+          <h5 >About Us</h5>
+          Welcome to <strong>More-Shop !!!</strong> We are an online store that
+          offers a wide range of products to meet all of your shopping needs.
+          Our goal is to provide our customers with a convenient and enjoyable
+          shopping experience from start to finish. We pride ourselves on our
+          extensive selection of products, competitive pricing, and exceptional
+          customer service.
+
+          <br />
+          <br />Whether you're shopping for the latest fashion
+          trends, the newest electronics, or something else entirely, we've got
+          you covered. With fast and reliable shipping, you can rest assured
+          that your purchase will arrive on time and in excellent condition. At
+          <strong> More-Shop </strong>, we are dedicated to making your
+          shopping experience as seamless as possible. Our user-friendly website
+          is designed to help you find exactly what you're looking for quickly
+          and easily.
+
+          <br />
+          <br />If you have any questions or concerns, our friendly and
+          knowledgeable customer service team is always here to help. We believe
+          in offering our customers the best value for their money, which is why
+          we are constantly updating our inventory and sourcing new products. We
+          also offer special deals and promotions on a regular basis, so be sure
+          to sign up for our newsletter to stay up-to-date on the latest offers.
+          Thank you for choosing <strong> More-Shop </strong> as your go-to
+          shopping destination. We look forward to serving you!
+        </p>
       </div>
-      
+
     </Fragment>
 
   );

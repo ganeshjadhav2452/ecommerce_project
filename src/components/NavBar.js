@@ -10,7 +10,7 @@ function NavBar() {
   return (
     <Navbar bg="dark" variant="dark" className=" fixed-top">
       <Container>
-        <Navbar.Brand to="/">Navbar</Navbar.Brand>
+        <Navbar.Brand className='fw-bold border-bottom border-warning border-top p-2 rounded-3 text-warning' to="/">More-Shop</Navbar.Brand>
         <Nav className="me-auto d-flex align-item-center justify-content-center">
           <NavLink
             activeClassName="fw-bold bg-info rounded-3 p-1"
