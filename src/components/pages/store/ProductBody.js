@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Product from "./Product";
 import {Button} from "react-bootstrap";
 import CartOpenContext from "../../../store/cartOpenContext/CartOpenContext";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+
 const productsArr = [
   {
     id: 1,
@@ -236,7 +236,7 @@ const cartOpenButtonClickHandler= ()=>{
 }
   
   return (
-    <div className=" mt-5 parentDiv  " >
+    <div className="parentDiv  " >
    
       <section className="sectionStyle">
         <h2 className="" style={{ marginLeft: "43%", marginBottom: "-3%" }}>

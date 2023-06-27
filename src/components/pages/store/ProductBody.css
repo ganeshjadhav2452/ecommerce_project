@@ -10,7 +10,7 @@
     }
     .parentDiv{
         background-color: aliceblue;    
-    
+        margin-top: 8% !important;
             
         overflow: scroll;
 

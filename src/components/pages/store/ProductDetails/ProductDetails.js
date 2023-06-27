@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useCallback } from "react";
+import React, {  useContext } from "react";
 
 import { useParams } from "react-router-dom";
 import ProductDetailsContext from "../../../../store/productDetailsContext/ProductDetailsContext";
@@ -9,9 +9,9 @@ function ProductDetails() {
   console.log(detailsObj);
   console.log(params);
   return (
-    <div className="container mb-5 border border-3 shadow p-2">
+    <div className="container mb-5   border border-3 shadow p-2" style={{marginTop:'8%'}}>
       <div className="row d-flex flex-row  ">
-        <img className="col-5  m-1 shadow" src={detailsObj.url} />
+        <img className="col-5  m-1 shadow" src={detailsObj.url} alt="product " />
 
         <div className="col-6 ">
           <p className="fw-bold fs-5">Product : {detailsObj.title}</p>

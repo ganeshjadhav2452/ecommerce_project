@@ -4,11 +4,12 @@ import './About.css'
 function About() {
   return (
     <Fragment>
-      <div className="parent ">
-        <img className=" img rounded-circle aboutImg w-25" src="https://source.unsplash.com/4AWwK4izVhM" alt="profile" />
+    
+      <div className="parent border rounded-3 border-4 d-flex justify-content-center align-items-center shadow " style={{marginTop:'8%'}}>
+        <img className=" img shadow rounded-circle aboutImg w-25 p-1 " src="https://source.unsplash.com/4AWwK4izVhM" alt="profile" />
 
         <p className="w-50 para fw-">
-          <h5 >About Us</h5>
+          <span className="heading h3" >About Us</span >
           Welcome to <strong>More-Shop !!!</strong> We are an online store that
           offers a wide range of products to meet all of your shopping needs.
           Our goal is to provide our customers with a convenient and enjoyable

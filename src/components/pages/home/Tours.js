@@ -37,12 +37,12 @@ function Tours() {
 
   
   return (
-    <section className='w-100 h-100 bg-light  d-flex flex-column justify-content-center align-items-center'>
+    <section className='w-100 h-100 bg-light  d-flex flex-column justify-content-center align-items-center '>
       <div className='m-3'>
       <h3 className='fw-bold fs-3 '>Tours</h3>
       </div>
  
-    <div className='w-100'>
+    <div className='w-100 '>
 
       {tourData.map((tour)=> {
                

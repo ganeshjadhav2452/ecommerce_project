@@ -65,4 +65,9 @@ body{
   }
   
 
-  
+  .message{
+    position: absolute !important;
+   width: 38rem;
+   height: 4rem;
+   
+  }

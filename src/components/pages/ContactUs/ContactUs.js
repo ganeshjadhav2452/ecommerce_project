@@ -1,15 +1,21 @@
 import React, { useState } from "react";
-
+import WebHeading from "../../WebHeading";
+import LoaderEl from '../../Loader/Loader'
 import "./ContactUs.css";
 function ContactUs() {
+  const [isLoading,setIsLoading] = useState(false)
+  const [sent,setIsSent] = useState(false)
+ 
     const [allData, setAllData] = useState({
         userName:'',
         userPhoneNumber:'',
         userMessage:'',
         userEmail:'',
     })
+  
 
     const nameChangeHandler = (e)=>{
+      setIsSent(false)
         setAllData((prevData)=>{
             return{
                 ...prevData,
@@ -44,14 +50,14 @@ function ContactUs() {
 
     const allInputHandler = async(e)=>{
         e.preventDefault();
-
+        setIsSent(false)
         const allInfo = {
             userName:allData.userName,
             userEmail:allData.userEmail,
             userMessage:allData.userMessage,
             userPhoneNumber:allData.userPhoneNumber
         }
-
+       setIsLoading(true)
         const response = await fetch('https://ecommerce-project-e010c-default-rtdb.firebaseio.com/feedback.json',{
             method:'POST',
             body: JSON.stringify(allInfo),
@@ -60,7 +66,11 @@ function ContactUs() {
             }
            
         })
-
+        setIsLoading(false)
+        if(response.ok){
+          setIsSent(true)
+        }
+        
         setAllData({
             userEmail:'',
             userName:'',
@@ -69,12 +79,14 @@ function ContactUs() {
         })
 
     }
-
+    
   return (
-    <div className="mb-5">
-      <div className="container ">
+    <div className="mb-5 ">
+      {isLoading && <LoaderEl/>}
+      <WebHeading />
+      <div className="container  ">
         <div className="row contact-row   rounded-5 mb-2">
-          <div className="col-5 left common border border-2 ">
+          <div className="col-5 left shadow common border border-2 ">
             <div className="info d-flex flex-column justify-content-between">
             <div>
             <h2 className="quote-heading">You Are The Speical For Us.</h2>
@@ -86,11 +98,11 @@ function ContactUs() {
             </div>
           </div>
 
-          <div className="col-7 right common border border-2">
+          <div className="col-7 right shadow common border border-2">
           <form onSubmit={allInputHandler}>
             <div className="container mt-5">
               <div className="row">
-                
+             
                 <p className="heading fs-4  fw-bold mb-4 ">Contact Us</p>
                 
                 <div className="col-6">
@@ -144,7 +156,7 @@ function ContactUs() {
                       value={allData.userMessage}
                     ></textarea>
                  <button type="submit"  className="btn btn-primary mt-4 w-100 rounded-5" >submit</button>
-                 
+                 {sent && <p class="alert fw-bold alert-danger message" role="alert">Thank you . your details has been recevied , one of our executive will cantact you soon !</p>}
                   </div>
                  
                 </div>

@@ -7,6 +7,7 @@ import Tours from './Tours'
 function Home() {
   return (
     <div>
+      <WebHeading />
       <WebHeadingExtend />
       <Tours/>
       
