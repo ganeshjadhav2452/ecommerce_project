@@ -3,14 +3,14 @@ import AuthContext from "./AuthContext";
 import { useHistory } from "react-router-dom";
 function AuthcontextProvider(props) {
 
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
   const history = useHistory();
   const updateTheToken = (receviedToken) => {
     setToken(receviedToken);
   };
-  const isLoggedIn = token === null ? false : true;
-
+  const isLoggedIn = token !== null ;
+  console.log('isLoggedIn changed', isLoggedIn)
   const logoutHandler = () => {
     setToken(null);
     history.replace({pathname: '/auth'});

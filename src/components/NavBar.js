@@ -30,7 +30,7 @@ function NavBar() {
           <NavLink
             activeClassName="fw-bold bg-info rounded-3 p-1"
             className="m-3 text-light text-decoration-none"
-            to="/store"
+            to={isLoggedIn ? "/store" :'/auth'}
           >
             Store
           </NavLink>

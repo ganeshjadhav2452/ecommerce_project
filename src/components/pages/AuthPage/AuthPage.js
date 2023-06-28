@@ -1,4 +1,4 @@
-import React,{useState,useRef,useContext} from 'react'
+import React,{useState,useRef,useContext, useEffect} from 'react'
 import classes from './AuthPage.module.css'
 import { useHistory } from 'react-router-dom';
 import AuthContext from '../../../store/authContext/AuthContext';
@@ -14,7 +14,9 @@ function AuthPage() {
     const switchAuthModeHandler = () => {
         setIsLogin((prevState) => !prevState);
       };
-      const {updateTheToken} = useContext(AuthContext)
+      const {token,updateTheToken} = useContext(AuthContext)
+
+    
       const submitHandler = async(e)=>{
         e.preventDefault()
         setError(false)
@@ -49,7 +51,8 @@ function AuthPage() {
            const data = await response.json()
            console.log(data)
            localStorage.setItem('token',data.idToken)
-           updateTheToken(data.idToken)
+           updateTheToken(localStorage.getItem('token'))
+
 
           }catch(err){
             console.log(err)
