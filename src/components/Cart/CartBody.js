@@ -1,23 +1,59 @@
-import React,{useContext} from "react";
+import React, { useState, useContext, useEffect ,useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./CartBody.css";
 import CartItem from "./CartItem";
-import CartContext from "../../store/cartContext/CartContext";
 
 
+import AuthContext from "../../store/authContext/AuthContext";
+import CartItemContext from "../../store/CartItemContext/CartItemContext";
 
-function CartBody() {
-    const {updatedArray } = useContext(CartContext)
+const CartBody = () => {
+ 
+  const {cartData, updateTheCartItems}= useContext(CartItemContext);
+
+  const { isLoggedIn } = useContext(AuthContext);
+
+  
+    let fetchData = async () => {
+      const email = localStorage.getItem("email");
+      const userHalfEmail = email.replace("@", "");
+      const userEmail = userHalfEmail.replace(".", "");
+    
+      try {
+        const response = await fetch(
+          `https://crudcrud.com/api/50de178b2c024334b0c1424fe5c8fa68/${userEmail}`
+        );
+      
+        const data = await response.json();
+          console.log(data)
+        
+        updateTheCartItems(data);
+
+
+      } catch (err) {
+        console.log(err);
+      }
+  
+   
+  }
+ 
+  useEffect(() => {
+    if(isLoggedIn){
+      fetchData();
+    }
+   
+   
+  }, []);
 
   const cartBodyClickHandler = (e) => {
     e.stopPropagation();
   };
-  console.log(updatedArray)
+
   return (
-    <Container  onClick={cartBodyClickHandler}>
+    <Container onClick={cartBodyClickHandler}>
       <Row>
         <Col xs={12} className="cartBody rounded rounded-4 border border-5">
-          <p style={{ marginLeft: "30%" }} className="fs-2   fw-bold">
+          <p style={{ marginLeft: "30%" ,}} className="fs-2   fw-bold">
             Cart
           </p>
 
@@ -31,14 +67,15 @@ function CartBody() {
                 </div>
                 <hr />
 
-                {updatedArray.map((item) => (
-                 
+                {cartData.map((item) => (
                   <CartItem
+                    id={item._id}
                     title={item.title}
                     imgUrl={item.url}
                     price={item.price}
                     quantity={item.updatedQuantity}
                     key={item.id}
+                    onFetchData={fetchData}
                   />
                 ))}
               </Col>
@@ -48,6 +85,6 @@ function CartBody() {
       </Row>
     </Container>
   );
-}
+};
 
 export default CartBody;

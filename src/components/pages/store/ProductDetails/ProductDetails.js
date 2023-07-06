@@ -4,10 +4,13 @@ import { useParams } from "react-router-dom";
 import ProductDetailsContext from "../../../../store/productDetailsContext/ProductDetailsContext";
 import Comments from "./Comments";
 function ProductDetails() {
-  const params = useParams();
+  
   const { detailsObj } = useContext(ProductDetailsContext);
-  console.log(detailsObj);
-  console.log(params);
+
+
+  const buyButtonClickHandler = ()=>{
+    console.log(` Thanks for purchasing ${detailsObj.title} its now being ready to deliver` )
+   }
   return (
     <div className="container mb-5   border border-3 shadow p-2" style={{marginTop:'8%'}}>
       <div className="row d-flex flex-row  ">
@@ -59,8 +62,8 @@ function ProductDetails() {
         </div>
       </div>
       <div className="row d-flex justify-content-end p-2">
-        <button class="col-2 m-1  rounded rounded-5 bg-warning">Buy Now</button>
-        <button class="col-2  m-1 rounded rounded-5 bg-warning">Add To Cart</button>
+        <button onClick={buyButtonClickHandler} className="col-2 m-1  rounded rounded-5 bg-danger fw-bold text-light border-1">Buy Now</button>
+        <button className="col-2  m-1 rounded rounded-5 bg-warning fw-bold text-light border-1">Add To Cart</button>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ import AuthContext from "../store/authContext/AuthContext";
 function NavBar() {
   const { isLoggedIn, logoutHandler } = useContext(AuthContext);
   return (
-    <Navbar bg="dark" variant="dark" className=" fixed-top ">
+    <Navbar bg="dark" variant="dark" className=" fixed-top nav " style={{zIndex:'3'}}>
       <Container>
         <Navbar.Brand
           className="fw-bold border-bottom border-warning border-top p-2 rounded-3 text-warning"
@@ -66,7 +66,7 @@ function NavBar() {
             Logout
           </button>
         )}
-        <Cart />
+      { isLoggedIn &&  <Cart />}
       </Container>
     </Navbar>
   );

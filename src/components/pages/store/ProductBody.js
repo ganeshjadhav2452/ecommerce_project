@@ -1,9 +1,8 @@
-import React,{useState,useContext} from "react";
+import React from "react";
 import "./ProductBody.css";
 import { Container, Row, Col } from "react-bootstrap";
 import Product from "./Product";
-import {Button} from "react-bootstrap";
-import CartOpenContext from "../../../store/cartOpenContext/CartOpenContext";
+
 
 const productsArr = [
   {
@@ -117,7 +116,7 @@ const productsArr = [
     id: 7,
     title: "t-shirt",
     price: 40,
-    imageUrl: "https://source.unsplash.com/WWesmHEgXDs",
+    imageUrl: "https://source.unsplash.com/WWesHEgXDs",
     category: "merchandise",
     reviews: [
       { rating: 5, comment: "Great shirt!" },
@@ -227,13 +226,9 @@ const productsArr = [
 
 
 function ProductBody() {
-const {updateIsCartOpen} = useContext(CartOpenContext)
-const [isTrue,setIsTrue] = useState(false)
 
-const cartOpenButtonClickHandler= ()=>{
-  updateIsCartOpen(!isTrue);
-  setIsTrue(!isTrue)
-}
+
+
   
   return (
     <div className="parentDiv  " >
@@ -266,7 +261,7 @@ const cartOpenButtonClickHandler= ()=>{
           {productsArr.map((product) => {
               return product.category === 'merchandise' ? (  
                 <Col key={product.id} xs={3} className="m-3">
-                  <Product title={product.title} price={product.price} url={product.imageUrl} specifications={product.specifications} reviews={product.reviews} seller={product.seller} warranty={product.warranty}/>
+                  <Product id={product.id} title={product.title} price={product.price} url={product.imageUrl} specifications={product.specifications} reviews={product.reviews} seller={product.seller} warranty={product.warranty}/>
                 </Col>
               ) : null;
             })}
@@ -275,10 +270,7 @@ const cartOpenButtonClickHandler= ()=>{
         </Container>
 
       </section>
-     
-     <Button onClick={cartOpenButtonClickHandler}  className="text-info cartBtn mt-2 " variant="dark">
-          See Cart
-        </Button>
+   
     </div>
   );
 }

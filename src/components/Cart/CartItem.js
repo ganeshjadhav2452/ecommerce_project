@@ -1,37 +1,45 @@
-import React,{useContext} from "react";
+import React, { useContext, useEffect } from "react";
 import "./CartItem.css";
 import { Button } from "react-bootstrap";
+import axios from "axios";
+import CartItemContext from "../../store/CartItemContext/CartItemContext";
 import CartContext from "../../store/cartContext/CartContext";
 
 function CartItem(props) {
-    const {updatedArray} = useContext(CartContext)
 
-  const removeItemHandler = (e) => {
-   
-    let parentDiv = e.target.closest(".parentDiv").parentElement;
+  const { cartData, updateTheCartItems } = useContext(CartItemContext);
+  const {updateTheValue} = useContext(CartContext)
+  const removeItemHandler = async (e) => {
 
-    let currentEl = e.target.closest(".parentDiv");
-    
-        parentDiv.removeChild(currentEl);
 
- 
-   
-    for(let i = 0; i<updatedArray.length; i++){
-    
-      if(updatedArray[i].title === props.title){
-        console.log('updatedArray.title=' ,updatedArray[i].title , 'props.title=', props.title)
-        for(let j = i ; j<updatedArray.length; j++){
-          updatedArray[j] = updatedArray [j + 1] 
+    const email = localStorage.getItem("email");
+    const userHalfEmail = email.replace("@", "");
+    const userEmail = userHalfEmail.replace(".", "");
+    console.log(userEmail, props.id)
+
+    try {
+      const response = await axios.delete(
+        `https://crudcrud.com/api/50de178b2c024334b0c1424fe5c8fa68/${userEmail}/${props.id}`);
+        
+        if(response.error){
+          throw new Error('unable to fetch')
+         
+        }else{
+          props.onFetchData()
+          console.log(response);
         }
-        updatedArray.pop() 
-      }
-    }
+      
    
-    console.log(updatedArray)
+    } catch (err) {
+      alert(err.message);
+    }
   };
- 
+
   return (
-    <div className=" parentDiv cartItem d-flex justify-content-between fw-bold fs-5 p-4">
+    <div
+      key={props.id}
+      className=" parentDiv cartItem d-flex justify-content-between fw-bold fs-5 p-4"
+    >
       <span className="imgItem">
         <img className="item " src={props.imgUrl} />
         <span className="imgItem fs-6 ">{props.title}</span>

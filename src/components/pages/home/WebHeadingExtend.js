@@ -1,14 +1,39 @@
-import './WebHeadingExtend.css'
+
 import React,{Fragment} from 'react'
-import img from '../../assets/play-button.png'
+import carImg1 from '../../assets/car-1.jpg'
+import carImg2 from '../../assets/car-2.jpg'
+import carImg3 from '../../assets/car-3.jpg'
 
 function WebHeadingExtend() {
   return (
-    <div className='headin  p-4'>
-       <button className='btn bg-info w-4  fw-bold text-light ' style={{height:'3rem', width:'22rem'}}>  Get Latest Album</button>
-       <button className='btn mt-1'><img className=' bg-info btnImg img rounded rounded-circle' src={img} /></button>
+    <div id="carouselExampleIndicators" className="carousel slide" style={{ marginTop: '5rem',backgroundColor:'pink', zIndex:'0' }} data-ride="carousel" data-interval="4000">
+      <ol className="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div className="carousel-inner">
+        <div className="carousel-item active" >
+          <img className="d-block w-100"  src={carImg1} alt="First slide" />
+        </div>
+        <div className="carousel-item">
+          <img className="d-block w-100" src={carImg2} alt="Second slide" />
+        </div>
+        <div className="carousel-item">
+          <img className="d-block w-100" src={carImg3} alt="Third slide" />
+        </div>
+      </div>
+      <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="sr-only">Previous</span>
+      </a>
+      <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="sr-only">Next</span>
+      </a>
     </div>
-  )
+  );
 }
+
 
 export default WebHeadingExtend

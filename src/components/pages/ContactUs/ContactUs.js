@@ -156,7 +156,7 @@ function ContactUs() {
                       value={allData.userMessage}
                     ></textarea>
                  <button type="submit"  className="btn btn-primary mt-4 w-100 rounded-5" >submit</button>
-                 {sent && <p class="alert fw-bold alert-danger message" role="alert">Thank you . your details has been recevied , one of our executive will cantact you soon !</p>}
+                 {sent && <p className="alert fw-bold alert-danger message" role="alert">Thank you . your details has been recevied , one of our executive will cantact you soon !</p>}
                   </div>
                  
                 </div>

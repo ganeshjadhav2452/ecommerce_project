@@ -49,8 +49,9 @@ function AuthPage() {
            }
 
            const data = await response.json()
-           console.log(data)
+
            localStorage.setItem('token',data.idToken)
+           localStorage.setItem('email',data.email)
            updateTheToken(localStorage.getItem('token'))
 
 

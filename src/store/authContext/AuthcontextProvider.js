@@ -10,12 +10,13 @@ function AuthcontextProvider(props) {
     setToken(receviedToken);
   };
   const isLoggedIn = token !== null ;
-  console.log('isLoggedIn changed', isLoggedIn)
+
   const logoutHandler = () => {
     setToken(null);
     history.replace({pathname: '/auth'});
     localStorage.removeItem('token')
-  
+    localStorage.removeItem('email')
+    
   
   };
   return (

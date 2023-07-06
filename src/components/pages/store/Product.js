@@ -1,18 +1,23 @@
 import React, { Fragment, useContext, useState, } from "react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link , useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 import { Card, Button } from "react-bootstrap";
 import CartContext from "../../../store/cartContext/CartContext";
 import './Product.css'
 import ProductDetailsContext from "../../../store/productDetailsContext/ProductDetailsContext";
-
+import CartItemContext from "../../../store/CartItemContext/CartItemContext";
+import LoaderEl from "../../Loader/Loader";
 function Product(props) {
-  const myProps = props;
-  const { updateTheValue } = useContext(CartContext);
+  const {id} = useParams()
+  console.log(id)
+  const {updateTheCartItems} = useContext(CartItemContext)
+  const { updatedArray, updateTheValue } = useContext(CartContext);
   const [updatedQuantity, updateTheQuantity] = useState(1);
-  const {updateTheDetailsObj} = useContext(ProductDetailsContext)
-
+  const { updateTheDetailsObj } = useContext(ProductDetailsContext)
+  const {cartData} = useContext(CartItemContext)
+  const [isLoading, setIsLoading] = useState(false)
   const quantityUpdater = (e) => {
+   
     updateTheQuantity(e.target.value)
   }
   const newObj = {
@@ -20,36 +25,128 @@ function Product(props) {
     updatedQuantity
   };
 
-  const addToCartButtonHandler = () => {
-    updateTheValue(newObj);
+  const addToCartButtonHandler = async () => {
 
-    updateTheQuantity(1)
+    const email = localStorage.getItem('email')
+    const userHalfEmail = email.replace('@', '')
+    const userEmail = userHalfEmail.replace('.', '')
+    // returning nothing if product is already there in the cart
+    let itemId ;
+    
+    let flag = false;
+    cartData.map((obj) => {
+      if (obj.id === props.id) {
+        flag = true
+        itemId = obj._id
+        updateTheQuantity (obj.updatedQuantity + updatedQuantity) 
+        return;
+      } 
+    })
+
+   
+  
+   
+
+   
+
+    // updateTheQuantity(updatedQuantity + 1)
+
+    if (!flag) {
+      try {
+        setIsLoading(true)
+
+        const response = await fetch(`https://crudcrud.com/api/a8fb159545944427ac2897008bdd7b30/${userEmail}`, {
+          method: "POST",
+          body: JSON.stringify(newObj),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        
+        setIsLoading(false)
+        if (response.ok) {
+         
+          return;
+        }
+       
+
+        const data = await response.json()
+
+        updateTheValue(data);
+        // updateTheCartItems(data)
+      } catch (err) {
+        console.log(err)
+      }
+    }else{
+
+      try {
+        const response = await fetch(`https://crudcrud.com/api/a8fb159545944427ac2897008bdd7b30/${userEmail}/${itemId}`, {
+          method: "PUT",
+          body: JSON.stringify({
+            ...newObj,
+           updatedQuantity:updatedQuantity
+
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+     
+        if (response.ok) {
+         
+          return;
+        }
+       
+
+        const data = await response.json()
+
+        updateTheValue(data);
+        // updateTheCartItems(data)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    
   };
 
-  const cardClickHandler = ()=>{
+  const cardClickHandler = () => {
     updateTheDetailsObj(props)
    
   }
+
+  const buyButtonClickHandler = ()=>{
+   console.log(` Thanks for purchasing ${props.title} its now being ready to deliver` )
+  }
   return (
-    <Link to={ `/store/${props.id}`} style={{textDecoration:'none'}} >
-     
-      <Card onClick={cardClickHandler} style={{ width: "18rem" }} className="  rounded-4 shadow-lg bg-light">
+    <Fragment>
+      {isLoading && <LoaderEl/>}
+      <Card  style={{ width: "18rem" }} className="  rounded-4 shadow-lg bg-light">
         <Card.Title className=" d-flex justify-content-center m-2">
           {props.title}
         </Card.Title>
-        <Card.Img variant="top" src={props.url} className="cardImg p-2 rounded-4 " />
+
+        <Link to={`/store/${props.id}`} style={{ textDecoration: 'none' }} > <Card.Img onClick={cardClickHandler} variant="top" src={props.url} className="  cardImg p-2 rounded-4 "/> </Link>
+
         <Card.Body className="d-flex  align-items-center  ">
           <Card.Text className="fw-bold fs-4">${props.price}</Card.Text>
           <form>
             <input onChange={quantityUpdater} value={updatedQuantity} type='number fw-bold' className="w-25  qty p-2"></input>
           </form>
-          <Button className="addBtn" variant="primary" onClick={addToCartButtonHandler}>
+          <div className="d-flex flex-row shadow">
+
+         
+          <Button  className="addBtn shadow " variant="danger" onClick={buyButtonClickHandler}>
+            Buy
+          </Button>
+          <Button className="addBtn shadow" variant="warning" onClick={addToCartButtonHandler}>
             Add
           </Button>
+          </div>
         </Card.Body>
       </Card>
-     
-    </Link>
+      </Fragment>
+   
   );
 }
 
