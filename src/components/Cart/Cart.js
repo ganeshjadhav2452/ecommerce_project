@@ -36,7 +36,7 @@ function Cart() {
         <Col xs={10}>
           <img className="img" src={cartImg} />
 
-          {!cartOpen ? null : <CartBody cartStatus={cartOpen} />}
+          {!cartOpen ? null : <CartBody cartStatus={cartOpen} cartOpen={setCartOpen} />}
         </Col>
       </Row>
     </Container>

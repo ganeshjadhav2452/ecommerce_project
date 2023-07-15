@@ -7,7 +7,7 @@ import CartItem from "./CartItem";
 import AuthContext from "../../store/authContext/AuthContext";
 import CartItemContext from "../../store/CartItemContext/CartItemContext";
 
-const CartBody = () => {
+const CartBody = (props) => {
  
   const {cartData, updateTheCartItems}= useContext(CartItemContext);
 
@@ -21,7 +21,7 @@ const CartBody = () => {
     
       try {
         const response = await fetch(
-          `https://crudcrud.com/api/50de178b2c024334b0c1424fe5c8fa68/${userEmail}`
+          `https://crudcrud.com/api/8de200f92a404275bb4dcc108f8887f9/${userEmail}`
         );
       
         const data = await response.json();
@@ -56,6 +56,9 @@ const CartBody = () => {
           <p style={{ marginLeft: "30%" ,}} className="fs-2   fw-bold">
             Cart
           </p>
+          <button className="btn-primary" style={{position:'absolute', left:'60%', top:'2%'}} onClick={()=>{
+            props.cartOpen(false)
+          }}>X</button>
 
           <Container>
             <Row>

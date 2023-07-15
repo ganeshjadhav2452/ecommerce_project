@@ -1,14 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import "./CartItem.css";
 import { Button } from "react-bootstrap";
 import axios from "axios";
-import CartItemContext from "../../store/CartItemContext/CartItemContext";
-import CartContext from "../../store/cartContext/CartContext";
+
 
 function CartItem(props) {
 
-  const { cartData, updateTheCartItems } = useContext(CartItemContext);
-  const {updateTheValue} = useContext(CartContext)
+
+
   const removeItemHandler = async (e) => {
 
 
@@ -19,7 +18,7 @@ function CartItem(props) {
 
     try {
       const response = await axios.delete(
-        `https://crudcrud.com/api/50de178b2c024334b0c1424fe5c8fa68/${userEmail}/${props.id}`);
+        `https://crudcrud.com/api/8de200f92a404275bb4dcc108f8887f9/${userEmail}/${props.id}`);
         
         if(response.error){
           throw new Error('unable to fetch')

@@ -10,8 +10,8 @@ import LoaderEl from "../../Loader/Loader";
 function Product(props) {
   const {id} = useParams()
   console.log(id)
-  const {updateTheCartItems} = useContext(CartItemContext)
-  const { updatedArray, updateTheValue } = useContext(CartContext);
+
+  const {  updateTheValue } = useContext(CartContext);
   const [updatedQuantity, updateTheQuantity] = useState(1);
   const { updateTheDetailsObj } = useContext(ProductDetailsContext)
   const {cartData} = useContext(CartItemContext)
@@ -53,9 +53,10 @@ function Product(props) {
 
     if (!flag) {
       try {
+        
         setIsLoading(true)
 
-        const response = await fetch(`https://crudcrud.com/api/a8fb159545944427ac2897008bdd7b30/${userEmail}`, {
+        const response = await fetch(`https://crudcrud.com/api/8de200f92a404275bb4dcc108f8887f9/${userEmail}`, {
           method: "POST",
           body: JSON.stringify(newObj),
           headers: {
@@ -80,7 +81,7 @@ function Product(props) {
     }else{
 
       try {
-        const response = await fetch(`https://crudcrud.com/api/a8fb159545944427ac2897008bdd7b30/${userEmail}/${itemId}`, {
+        const response = await fetch(`https://crudcrud.com/api/8de200f92a404275bb4dcc108f8887f9/${userEmail}/${itemId}`, {
           method: "PUT",
           body: JSON.stringify({
             ...newObj,

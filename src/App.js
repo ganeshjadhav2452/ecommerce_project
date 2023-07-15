@@ -11,6 +11,7 @@ import CartItemContextProvider from "./store/CartItemContext/CartItemContextProv
 import Footer from "./components/footer/Footer";
 import CartContextProvider from "./store/cartContext/CartContextProvider";
 import ProductDetailsContextProvider from "./store/productDetailsContext/ProductDetailsContextProvider";
+import WebHeadingExtend from "./components/pages/home/WebHeadingExtend";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
             <CartContextProvider>
               <div>
                 <NavBar />
-
+               
 
                 <Switch>
                   <Route exact path="/" component={Home} />
