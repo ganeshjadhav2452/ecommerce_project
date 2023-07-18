@@ -18,21 +18,28 @@ const CartBody = (props) => {
       const email = localStorage.getItem("email");
       const userHalfEmail = email.replace("@", "");
       const userEmail = userHalfEmail.replace(".", "");
-    
+
+      const  fetchedDataFromServer = []
       try {
         const response = await fetch(
-          `https://crudcrud.com/api/8de200f92a404275bb4dcc108f8887f9/${userEmail}`
+          `https://ecommerce-project-e010c-default-rtdb.firebaseio.com/${userEmail}.json`
         );
       
         const data = await response.json();
           console.log(data)
-        
-        updateTheCartItems(data);
+          for (const id in data) {
+            fetchedDataFromServer.push({
+                serverId:id,
+                ...data[id]
+            })
+          }
+      
 
 
       } catch (err) {
         console.log(err);
       }
+      updateTheCartItems(fetchedDataFromServer);
   
    
   }
@@ -50,29 +57,32 @@ const CartBody = (props) => {
   };
 
   return (
-    <Container onClick={cartBodyClickHandler}>
-      <Row>
-        <Col xs={12} className="cartBody rounded rounded-4 border border-5">
-          <p style={{ marginLeft: "30%" ,}} className="fs-2   fw-bold">
+    <div onClick={cartBodyClickHandler}>
+      <div>
+        <div xs={12} className="cartBody rounded rounded-4 border border-5">
+          <p style={{ marginLeft: "45%" ,}} className="fs-2   fw-bold">
             Cart
           </p>
-          <button className="btn-primary" style={{position:'absolute', left:'60%', top:'2%'}} onClick={()=>{
+          <button className="btn-primary" style={{position:'absolute', right:'36%'}} onClick={()=>{
             props.cartOpen(false)
           }}>X</button>
 
-          <Container>
-            <Row>
-              <Col xs={8}>
-                <div className=" d-flex justify-content-between fw-bold fs-5 p-4">
-                  <span>Item</span>
-                  <span>Price</span>
-                  <span>Quantity</span>
-                </div>
-                <hr />
-
-                {cartData.map((item) => (
+        
+              <table class="fl-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>title</th>
+                                <th>Amount</th>
+                                <th>Quantity</th>
+                                <th>Action</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {cartData.map((item) => (
                   <CartItem
-                    id={item._id}
+                    id={item.serverId}
                     title={item.title}
                     imgUrl={item.url}
                     price={item.price}
@@ -81,12 +91,12 @@ const CartBody = (props) => {
                     onFetchData={fetchData}
                   />
                 ))}
-              </Col>
-            </Row>
-          </Container>
-        </Col>
-      </Row>
-    </Container>
+                        </tbody>
+                    </table>
+           
+        </div>
+      </div>
+    </div>
   );
 };
 

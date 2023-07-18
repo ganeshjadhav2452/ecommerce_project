@@ -1,4 +1,4 @@
-import React from "react";
+import React,{Fragment} from "react";
 import "./CartItem.css";
 import { Button } from "react-bootstrap";
 import axios from "axios";
@@ -18,7 +18,7 @@ function CartItem(props) {
 
     try {
       const response = await axios.delete(
-        `https://crudcrud.com/api/8de200f92a404275bb4dcc108f8887f9/${userEmail}/${props.id}`);
+        `https://ecommerce-project-e010c-default-rtdb.firebaseio.com/${userEmail}/${props.id}.json`);
         
         if(response.error){
           throw new Error('unable to fetch')
@@ -35,6 +35,7 @@ function CartItem(props) {
   };
 
   return (
+    /*
     <div
       key={props.id}
       className=" parentDiv cartItem d-flex justify-content-between fw-bold fs-5 p-4"
@@ -51,6 +52,22 @@ function CartItem(props) {
         </Button>
       </div>
     </div>
+    */
+
+
+    <Fragment>
+    <tr>
+    <td>  <img className="item " src={props.imgUrl} /></td>
+        <td>{props.title}</td>
+        <td>{props.price}</td>
+        <td>{props.quantity}</td>
+       
+        <td> <Button onClick={removeItemHandler} className="rmBtn">
+          Remove
+        </Button></td>
+       
+    </tr>
+</Fragment>
   );
 }
 

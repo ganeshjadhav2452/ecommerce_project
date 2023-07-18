@@ -37,7 +37,7 @@ function Product(props) {
     cartData.map((obj) => {
       if (obj.id === props.id) {
         flag = true
-        itemId = obj._id
+        itemId = obj.serverId
         updateTheQuantity (obj.updatedQuantity + updatedQuantity) 
         return;
       } 
@@ -56,7 +56,7 @@ function Product(props) {
         
         setIsLoading(true)
 
-        const response = await fetch(`https://crudcrud.com/api/8de200f92a404275bb4dcc108f8887f9/${userEmail}`, {
+        const response = await fetch(`https://ecommerce-project-e010c-default-rtdb.firebaseio.com/${userEmail}.json`, {
           method: "POST",
           body: JSON.stringify(newObj),
           headers: {
@@ -81,7 +81,7 @@ function Product(props) {
     }else{
 
       try {
-        const response = await fetch(`https://crudcrud.com/api/8de200f92a404275bb4dcc108f8887f9/${userEmail}/${itemId}`, {
+        const response = await fetch(`https://ecommerce-project-e010c-default-rtdb.firebaseio.com/${userEmail}/${itemId}.json`, {
           method: "PUT",
           body: JSON.stringify({
             ...newObj,
